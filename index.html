@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Casa del Nonno</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <section id="loginScreen" class="login-screen">
+    <div class="login-box">
+      <h1>LA CASA DEL NONNO</h1>
+      <p>Caffè & Dolci fatti con amore</p>
+
+      <label>Mitarbeiter</label>
+      <select id="employeeSelect"></select>
+
+      <label>Passwort</label>
+      <input id="passwordInput" type="password" placeholder="Passwort eingeben" />
+
+      <button onclick="login()">Einloggen</button>
+
+      <p id="loginError" class="error"></p>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section id="app" class="hidden">
+
+    <header class="top-header">
+      <div class="logo-circle">👨‍🍳</div>
+      <h1>LA CASA DEL NONNO</h1>
+      <p>CAFFÈ & DOLCI FATTI CON AMORE</p>
+
+      <div class="employee-row">
+        <span>Mitarbeiter: <strong id="currentEmployeeName"></strong></span>
+        <button onclick="logout()">Abmelden</button>
+      </div>
+
+      <div class="top-buttons">
+        <button onclick="showPage('orderPage')">🧾 Bestellung</button>
+        <button onclick="showPage('stockPage')">📦 Lager bearbeiten</button>
+      </div>
+    </header>
+
+    <!-- BESTELLSEITE -->
+    <main id="orderPage">
+
+      <div id="productGrid" class="product-grid"></div>
+
+      <section class="bottom-area">
+        <div class="order-box">
+          <h2>🛒 Bestellung</h2>
+          <div id="cartItems">Keine Artikel ausgewählt</div>
+        </div>
+
+        <div class="total-box">
+          <h2>🏷 Rabatt</h2>
+
+          <div class="discount-buttons">
+            <button onclick="setDiscount(5)">5%</button>
+            <button onclick="setDiscount(10)">10%</button>
+            <button onclick="setDiscount(15)">15%</button>
+            <button onclick="setDiscount(20)">20%</button>
+            <button onclick="setDiscount(25)">25%</button>
+            <button onclick="setDiscount(30)">30%</button>
+            <button onclick="setDiscount(50)">50%</button>
+            <button onclick="setDiscount(0)">Rabatt entfernen</button>
+          </div>
+
+          <div class="total-display">
+            <p>Zwischensumme: <span id="subtotal">0,00 €</span></p>
+            <p>Rabatt: <span id="discountText">0%</span></p>
+            <h2>GESAMT</h2>
+            <h3 id="total">0,00 €</h3>
+          </div>
+        </div>
+      </section>
+
+      <button class="finish-button" onclick="finishOrder()">🧾 Bestellung abschließen</button>
+    </main>
+
+    <!-- LAGERSEITE -->
+    <main id="stockPage" class="hidden">
+      <section class="stock-box">
+        <h2>📦 Lagerbestand bearbeiten</h2>
+        <p>Hier kannst du den aktuellen Lagerbestand ändern.</p>
+
+        <div id="stockEditor"></div>
+
+        <button class="save-stock-button" onclick="saveStockFromEditor()">Lager speichern</button>
+      </section>
+    </main>
+
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
